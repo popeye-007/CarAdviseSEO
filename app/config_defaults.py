@@ -18,10 +18,11 @@ class Config(object):
     SECRET_KEY = "secret"
 
     @property
-    def SQLALCHEMY_DATABASE_URI(self):
-        return f'postgresql://{self.DB_USER}:{self.DB_PASS}@{self.DB_SERVER}/{self.DB_NAME}'
+    def db_connection(self):
+        SQLALCHEMY_DATABASE_URI = f'postgresql://{self.DB_USER}:{self.DB_PASS}@{self.DB_SERVER}/{self.DB_NAME}'
+        return SQLALCHEMY_DATABASE_URI
 
-class ProductionEnv(Config):
+class PRODENV(Config):
     DB_SERVER = ''
     DB_NAME = ''
     DB_USER = ''
@@ -30,7 +31,7 @@ class ProductionEnv(Config):
     CSRF_SESSION_KEY = "secret"
     SECRET_KEY = "secret"
     
-class DevelopmentEnv(Config):
+class DEVENV(Config):
     DEBUG = True
     BASE_DIR = os.path.abspath(os.path.dirname(__file__))
     CSRF_SESSION_KEY = "an01her_1#s1_v@lu3"
