@@ -7,7 +7,7 @@ class Config(object):
     TESTING = False
     DB_SERVER = 'localhost'
     DB_NAME = 'carAdviseSum'
-    DB_USER = 'postgre'
+    DB_USER = 'postgres'
     DB_PASS = 'postgresql'
     DEBUG = False
     BASE_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -36,6 +36,7 @@ class DEVENV(Config):
     BASE_DIR = os.path.abspath(os.path.dirname(__file__))
     CSRF_SESSION_KEY = "an01her_1#s1_v@lu3"
     SECRET_KEY = "an0ther_D3V_v@lu3"
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgresql@localhost/carAdviseSum'
 
 class TESTINGENV(Config):
     DB_SERVER = 'localhost'
